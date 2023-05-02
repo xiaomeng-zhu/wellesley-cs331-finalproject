@@ -1,27 +1,27 @@
 import random
 
-def ailon(V, edges):
+def ailon(G):
   """
-  For now:
-  V - a set of vertices in the graph
-  edges - an adjacency matrix (dict of lists)
+  Returns a list of clusters given a complete graph G
+  G - a complete graph matrix
   """
-  Vt = V
-  #clusters = set()
+  Vt = set([i for i in range(len(G))])
   clusters = []
   while len(Vt) != 0:
     p = random.choice(list(Vt))
-    C = set()
-    C.add(p)
-    for v in edges[p]:
-      C.add(v)
+    C = set([p])
+    edges = G[p]
+    for v in range(len(edges)):
+      if edges[v] == 1:
+        C.add(v)
     Vt = Vt.difference(C)
     clusters.append(C)
 
   return clusters
 
 
-V = {1, 2, 3, 4}
-edges = {1: [2, 4], 2: [1, 4], 3:[], 4:[1, 2]}
+#G = [[1,1,0],[1,1,0],[0,0,1]]
+#G = [[1,1,0,0], [1,1,0,0], [0,0,1,1], [0,0,1,1]]
+G = [[1,1,1,0], [1,1,1,0], [1,1,1,0], [0,0,0,1]]
 
-print(ailon(V, edges))
+print(ailon(G))
