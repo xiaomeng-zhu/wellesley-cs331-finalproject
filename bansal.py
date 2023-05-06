@@ -39,6 +39,8 @@ def bansal_naive(graph):
   else:
     return set([set(u) for u in list(range(n))])
 
+def delta_good(v, C, n):
+  pass
 
 def bansal_algorithm_cautious(graph):
   pass
