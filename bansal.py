@@ -87,7 +87,7 @@ def bansal_algorithm_cautious(G):
     Output: clusters under Algorithm Cautious in Bansal et al. p.97
     """
     vertices = list(range(len(G)))
-    clusters = []
+    clusters = [] # list of sets
     continue_loop = True
 
     while continue_loop:
@@ -106,6 +106,8 @@ def bansal_algorithm_cautious(G):
 
         # vertex addition step
         vertices_to_add = []
+
+        # if x is 7-delta good w.r.t. A(v), A(v) = A(v) union set of xs
         for x in vertices:
             if delta_good(7, v, Av, G):
                 vertices_to_add.append(x)
@@ -115,7 +117,7 @@ def bansal_algorithm_cautious(G):
             continue_loop = False
             # if A(v) is empty, output the remaining vertices as singleton nodes
             for v in vertices:
-                clusters.append([v])
+                clusters.append(set(v)) # singleton
         else:
             clusters.append(Av) # a list of sets
             vertices = list(set(vertices) - Av) # delete A(v) from the set of vertices
