@@ -16,7 +16,7 @@ def get_all_edges(n):
 def get_all_positive_neighbors(G,v):
     """
     Input: a decision matrix G and a vertex v
-    Output: a list of all the positive vertices of v
+    Output: a list of all the positive vertices of v including v itself
     """
     positive_neighbors = []
     for idx, decision in enumerate(G[v]):
@@ -63,7 +63,7 @@ def delta_good(delta, v, C, G):
     positive_neighbors = get_all_positive_neighbors(G,v)
     positive_neighbors_set = set(positive_neighbors)
 
-    quantity1 = len(positive_neighbors_set.intersect(cluster_set))
+    quantity1 = len(positive_neighbors_set.intersection(cluster_set))
     quantity2 = (1-delta)*len(C)
 
     # check if it satisfies the first constraint presented on Bansal et al. p.94
@@ -71,7 +71,7 @@ def delta_good(delta, v, C, G):
         return False
     
     all_vertex_set = set(range(len(G)))
-    quantity3 = len(positive_neighbors_set.intersect(all_vertex_set-cluster_set))
+    quantity3 = len(positive_neighbors_set.intersection(all_vertex_set-cluster_set))
     quantity4 = delta*len(C)
 
     # check if it satisfies the second constraint presented on Bansal et al. p.94
@@ -92,7 +92,9 @@ def bansal_algorithm_cautious(G):
 
     while continue_loop:
         v = random.choice(vertices) # choose a random vertex from the set of vertices
+        print(v)
         Av = set(get_all_positive_neighbors(G, v))
+        print(Av)
 
         # vertex removal step
         vertices_to_remove = []
@@ -101,6 +103,8 @@ def bansal_algorithm_cautious(G):
         for x in Av: 
             if not delta_good(3, v, Av, G):
                 vertices_to_remove.append(x)
+
+        print(vertices_to_remove)
 
         Av = Av - set(vertices_to_remove)
 
@@ -111,7 +115,8 @@ def bansal_algorithm_cautious(G):
         for x in vertices:
             if delta_good(7, v, Av, G):
                 vertices_to_add.append(x)
-        Av = Av + set(vertices_to_add)
+        Av = Av.union(set(vertices_to_add))
+        print(vertices_to_add)
 
         if Av == []:
             continue_loop = False
@@ -128,13 +133,15 @@ def bansal_algorithm_cautious(G):
 
     return clusters
             
-
+def bansal_algorithm_divide_choose(G):
+    pass
 
 
 
 if __name__ == "__main__":
-    simple_graph = [[1,0,0],
-                    [0,1,1],
-                    [0,1,1]]
-    res = bansal_naive(simple_graph)
+    simple_graph = [[1,1,1],
+                    [1,1,0],
+                    [1,0,1]]
+    # res = bansal_naive(simple_graph)
+    res = bansal_algorithm_cautious(simple_graph)
     print(res)
