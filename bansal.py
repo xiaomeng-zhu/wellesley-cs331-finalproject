@@ -56,7 +56,7 @@ def bansal_naive(graph):
 def delta_good(delta, v, C, G):
     """
     Given a vertex, cluster C, set of vertices V, check if v is delta-good
-    note: set of vertices V can be calculated based on G
+    note: the set of vertices V in the formula can be calculated based on G
     """
     
     cluster_set = set(C)
@@ -86,24 +86,49 @@ def bansal_algorithm_cautious(G):
     Input: a decision matrix G
     Output: clusters under Algorithm Cautious in Bansal et al. p.97
     """
-    random_start = random.choice(list(range(len(G))))
-    Av = get_all_positive_neighbors(G, random_start)
+    vertices = list(range(len(G)))
+    clusters = []
+    continue_loop = True
 
-    # vertex removal step
-    vertices_to_remove = []
-    for x in Av:
-        if not delta_good(3, random_start, Av, G):
-            vertices_to_remove.append(x)
+    while continue_loop:
+        v = random.choice(vertices) # choose a random vertex from the set of vertices
+        Av = set(get_all_positive_neighbors(G, v))
 
-    Av = list(set(Av) - set(vertices_to_remove))
+        # vertex removal step
+        vertices_to_remove = []
 
-    # vertex addition step
-    vertices_to_add = []
-    for x in len(G):
-        if delta_good(7, random_start, Av, G):
-            vertices_to_add.append(x)
-    Av = list(set(Av) + set(vertices_to_add))
-    
+        # if x is 3-delta bad w.r.t. A(v), A(v) = A(v) \ {x}
+        for x in Av: 
+            if not delta_good(3, v, Av, G):
+                vertices_to_remove.append(x)
+
+        Av = Av - set(vertices_to_remove)
+
+        # vertex addition step
+        vertices_to_add = []
+        for x in vertices:
+            if delta_good(7, v, Av, G):
+                vertices_to_add.append(x)
+        Av = Av + set(vertices_to_add)
+
+        if Av == []:
+            continue_loop = False
+            # if A(v) is empty, output the remaining vertices as singleton nodes
+            for v in vertices:
+                clusters.append([v])
+        else:
+            clusters.append(Av) # a list of sets
+            vertices = list(set(vertices) - Av) # delete A(v) from the set of vertices
+
+            # if no vertices are left, stop looping
+            if vertices == []: 
+                continue_loop = False
+
+    return clusters
+            
+
+
+
 
 if __name__ == "__main__":
     simple_graph = [[1,0,0],
