@@ -34,9 +34,11 @@ def bansal_naive(graph):
            
     if num_pos >= num_neg:
         all_vertices = list(range(n))
-        return set(all_vertices)
+        # print(all_vertices)
+        return [set(all_vertices)]
     else:
-        return set([set(u) for u in list(range(n))])
+        # print([[u] for u in list(range(n))])
+        return [{u} for u in list(range(n))]
 
 def delta_good(v, C, n):
     pass
@@ -45,8 +47,8 @@ def bansal_algorithm_cautious(graph):
     pass
 
 if __name__ == "__main__":
-    simple_graph = [[1,1,0],
-                    [1,1,1],
+    simple_graph = [[1,0,0],
+                    [0,1,1],
                     [0,1,1]]
     res = bansal_naive(simple_graph)
     print(res)
