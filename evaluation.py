@@ -32,6 +32,15 @@ def calculate_mistakes(G, C):
     correctness_index = total_mistakes/len(all_edges)
     return correctness_index
 
+def calculate_mistakes_under_alg(func_name, G):
+    """
+    Given a function name and a Graph, calculate its correctness index
+    """
+    clusters = func_name(G)
+    correctness_index = calculate_mistakes(G, clusters)
+    return correctness_index
+
+
 if __name__ == "__main__":
     simple_graph = [[1,1,0],
                     [1,1,1],
@@ -39,6 +48,7 @@ if __name__ == "__main__":
     clusters = bansal_naive(simple_graph)
     print(clusters)
     print(calculate_mistakes(simple_graph, clusters))
+    print(calculate_mistakes_under_alg(bansal_naive, simple_graph))
 
 
   
