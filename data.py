@@ -36,7 +36,14 @@ def generate_dataset(min_vertex, max_vertex, graph_per_size):
             G = generate_random_decision_matrix(i)
             numpy.savetxt("{}-complete-{}.csv".format(i, j), G, delimiter=",")
 
+def import_graph(file_name):
+    """
+    Input: the filename containing
+    Output:
+    """
     
 if __name__ == "__main__":
     # generate_random_decision_matrix(5)
     # generate_dataset(3,10,3)
+    file_name = "data/9-complete-1.csv"
+    G = import_graph(file_name)
