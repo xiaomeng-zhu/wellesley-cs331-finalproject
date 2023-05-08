@@ -1,5 +1,16 @@
 from bansal import get_all_edges, bansal_naive
 
+def import_graph(file_name):
+    """
+    Input: the relative filepath of the csv
+    Output: the graph stored in a list of sets
+    """
+    graph = []
+    with open(file_name, "r") as f:
+        for row in f:
+            graph.append([int(float(i)) for i in row.strip().split(",")])
+    return graph
+
 def is_valid_decision_matrix(G):
     """
     Given a graph G, check if it is valid decision matrix (condition 1 and 2 must all be satisfied)
@@ -63,14 +74,15 @@ def calculate_mistakes_under_alg(func_name, G):
 
 
 if __name__ == "__main__":
-    simple_graph = [[1,1,0],
-                    [1,1,1],
-                    [0,1,1]]
-    print(is_valid_decision_matrix(simple_graph)) # expected: True
-    clusters = bansal_naive(simple_graph)
-    print(clusters) # expected: [{0,1,2}]
-    print(calculate_mistakes(simple_graph, clusters)) # expected: 0.33333333
-    print(calculate_mistakes_under_alg(bansal_naive, simple_graph)) # expected: 0.33333333
+    # simple_graph = [[1,1,0],
+    #                 [1,1,1],
+    #                 [0,1,1]]
+    # print(is_valid_decision_matrix(simple_graph)) # expected: True
+    # clusters = bansal_naive(simple_graph)
+    # print(clusters) # expected: [{0,1,2}]
+    # print(calculate_mistakes(simple_graph, clusters)) # expected: 0.33333333
+    # print(calculate_mistakes_under_alg(bansal_naive, simple_graph)) # expected: 0.33333333
 
+    import_graph("data/4-complete-0.csv")
 
   
