@@ -1,33 +1,42 @@
 from bansal import get_all_edges
+import random
+import numpy
 
-def distance_to_decision(G):
+def generate_random_decision_matrix(n):
     """
-    Input: A complete distance matrix G
-    Output: the corresponding decision matrix G' where edges whose length 
-    above average are rounded up and rounded down otherwise
+    Input: The number of vertices in a graph
+    Output: A randomly generated symmetric decision matrix
     """
-    all_edges = get_all_edges(len(G))
-    sum_edges = 0
-    for u,v in all_edges:
-        dist = G[u][v]
-        sum_edges += dist
-    average_distance = sum_edges/len(all_edges)
-
-    D = []
-    for row in G:
-        D_row = []
-        for item in row:
-            if item >= average_distance:
-                D_row.append(1)
+    G = [[] for i in range(n)]
+    # print(G)
+    for i in range(n):
+        for j in range(n):
+            # print("ij", i, j)
+            if i == j:
+                G[i].append(1)
+            elif i < j:
+                G[i].append(random.choice([0,1]))
             else:
-                D_row.append(0)
-        D.append(D_row)
+                # print(G)
+                G[i].append(G[j][i])
+    for row in G:
+        print(row)
+    return G
+                
+def generate_dataset(min_vertex, max_vertex, graph_per_size):
+    """
+    Input: 
+    min_vertex - the minimum number of vertices in a generated graph
+    max_vertex - the maximum number of vertices in a generated graph
+    graph_per_size - how many randomly generated graph per size
+    Output: csv files containing generated graphs
+    """
+    for i in range(min_vertex, max_vertex+1):
+        for j in range(graph_per_size):
+            G = generate_random_decision_matrix(i)
+            numpy.savetxt("{}-complete-{}.csv".format(i, j), G, delimiter=",")
 
-    return D
     
 if __name__ == "__main__":
-    simple_dist_matrix = [[0, 1, 3],
-                          [1, 0, 9],
-                          [3, 9, 0]]
-    resulting_decision_matrix = distance_to_decision(simple_dist_matrix)
-    print(resulting_decision_matrix)
+    # generate_random_decision_matrix(5)
+    # generate_dataset(3,10,3)
