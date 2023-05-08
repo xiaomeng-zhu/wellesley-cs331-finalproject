@@ -3,7 +3,7 @@ from bansal import get_all_edges, bansal_naive
 def import_graph(file_name):
     """
     Input: the relative filepath of the csv
-    Output: the graph stored in a list of sets
+    Output: the graph stored in a list of lists
     """
     graph = []
     with open(file_name, "r") as f:
