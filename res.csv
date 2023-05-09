@@ -1,73 +1,73 @@
-filename,func_name,clusters,index
-3-complete-2.csv,bansal_naive,"[{0}, {1}, {2}]",0.0
-3-complete-2.csv,bansal_algorithm_cautious,"[{0, 1, 2}]",1.0
-3-complete-2.csv,ailon,"[{0}, {1}, {2}]",0.0
-4-complete-1.csv,bansal_naive,"[{0, 1, 2, 3}]",0.3333333333333333
-4-complete-1.csv,bansal_algorithm_cautious,"[{0, 1, 2, 3}]",0.3333333333333333
-4-complete-1.csv,ailon,"[{0, 1, 3}, {2, 3}]",0.0
-4-complete-0.csv,bansal_naive,"[{0, 1, 2, 3}]",0.3333333333333333
-4-complete-0.csv,bansal_algorithm_cautious,"[{0, 1, 2, 3}]",0.3333333333333333
-4-complete-0.csv,ailon,"[{0, 2, 3}, {0, 1}]",0.0
-3-complete-1.csv,bansal_naive,"[{0}, {1}, {2}]",0.3333333333333333
-3-complete-1.csv,bansal_algorithm_cautious,"[{0, 1, 2}]",0.6666666666666666
-3-complete-1.csv,ailon,"[{0, 2}, {1}]",0.0
-4-complete-2.csv,bansal_naive,"[{0, 1, 2, 3}]",0.16666666666666666
-4-complete-2.csv,bansal_algorithm_cautious,"[{0, 1, 2, 3}]",0.16666666666666666
-4-complete-2.csv,ailon,"[{0, 2, 3}, {0, 1, 3}]",0.0
-3-complete-0.csv,bansal_naive,"[{0, 1, 2}]",0.3333333333333333
-3-complete-0.csv,bansal_algorithm_cautious,"[{0, 1, 2}]",0.3333333333333333
-3-complete-0.csv,ailon,"[{0, 1, 2}]",0.3333333333333333
-5-complete-2.csv,bansal_naive,"[{0}, {1}, {2}, {3}, {4}]",0.4
-5-complete-2.csv,bansal_algorithm_cautious,"[{0, 1, 2, 3, 4}]",0.6
-5-complete-2.csv,ailon,"[{0, 1, 4}, {1, 2, 3}]",0.2
-5-complete-0.csv,bansal_naive,"[{0, 1, 2, 3, 4}]",0.5
-5-complete-0.csv,bansal_algorithm_cautious,"[{0, 1, 2, 3, 4}]",0.5
-5-complete-0.csv,ailon,"[{0, 2, 4}, {0, 1, 3}]",0.1
-5-complete-1.csv,bansal_naive,"[{0}, {1}, {2}, {3}, {4}]",0.4
-5-complete-1.csv,bansal_algorithm_cautious,"[{0, 1, 2, 3, 4}]",0.6
-5-complete-1.csv,ailon,"[{0, 2}, {1, 2, 4}, {3, 4}]",0.1
-7-complete-0.csv,bansal_naive,"[{0, 1, 2, 3, 4, 5, 6}]",0.38095238095238093
-7-complete-0.csv,bansal_algorithm_cautious,"[{0, 1, 2, 3, 4, 5, 6}]",0.38095238095238093
-7-complete-0.csv,ailon,"[{1, 4, 5, 6}, {0, 3, 4, 6}, {0, 2, 4}]",0.09523809523809523
-8-complete-2.csv,bansal_naive,"[{0, 1, 2, 3, 4, 5, 6, 7}]",0.5
-8-complete-2.csv,bansal_algorithm_cautious,"[{0, 1, 2, 3, 4, 5, 6, 7}]",0.5
-8-complete-2.csv,ailon,"[{0, 1, 5, 6, 7}, {1, 2, 4, 7}, {0, 3, 4, 5}]",0.21428571428571427
-7-complete-1.csv,bansal_naive,"[{0}, {1}, {2}, {3}, {4}, {5}, {6}]",0.3333333333333333
-7-complete-1.csv,bansal_algorithm_cautious,"[{0, 1, 2, 3, 4, 5, 6}]",0.6666666666666666
-7-complete-1.csv,ailon,"[{5}, {2, 4, 6}, {1, 2, 3}, {0, 3}]",0.0
-8-complete-1.csv,bansal_naive,"[{0, 1, 2, 3, 4, 5, 6, 7}]",0.5
-8-complete-1.csv,bansal_algorithm_cautious,"[{0, 1, 2, 3, 4, 5, 6, 7}]",0.5
-8-complete-1.csv,ailon,"[{0, 2, 3, 5, 6, 7}, {0, 1, 6, 7}, {0, 3, 4, 5}]",0.25
-8-complete-0.csv,bansal_naive,"[{0, 1, 2, 3, 4, 5, 6, 7}]",0.4642857142857143
-8-complete-0.csv,bansal_algorithm_cautious,"[{0, 1, 2, 3, 4, 5, 6, 7}]",0.4642857142857143
-8-complete-0.csv,ailon,"[{0, 1, 4, 6, 7}, {1, 2, 3, 4, 5, 6}]",0.39285714285714285
-7-complete-2.csv,bansal_naive,"[{0}, {1}, {2}, {3}, {4}, {5}, {6}]",0.38095238095238093
-7-complete-2.csv,bansal_algorithm_cautious,"[{0, 1, 2, 3, 4, 5, 6}]",0.6190476190476191
-7-complete-2.csv,ailon,"[{3, 4, 6}, {2, 4, 5, 6}, {0, 6}, {1, 6}]",0.09523809523809523
-6-complete-2.csv,bansal_naive,"[{0, 1, 2, 3, 4, 5}]",0.3333333333333333
-6-complete-2.csv,bansal_algorithm_cautious,"[{0, 1, 2, 3, 4, 5}]",0.3333333333333333
-6-complete-2.csv,ailon,"[{0, 1, 4, 5}, {0, 1, 3, 5}, {0, 2, 5}]",0.06666666666666667
-9-complete-0.csv,bansal_naive,"[{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}]",0.4444444444444444
-9-complete-0.csv,bansal_algorithm_cautious,"[{0, 1, 2, 3, 4, 5, 6, 7, 8}]",0.5555555555555556
-9-complete-0.csv,ailon,"[{8, 0, 2, 5}, {0, 4, 5, 6, 7}, {0, 1, 3, 4}]",0.2222222222222222
-9-complete-1.csv,bansal_naive,"[{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}]",0.4444444444444444
-9-complete-1.csv,bansal_algorithm_cautious,"[{0, 1, 2, 3, 4, 5, 6, 7, 8}]",0.5555555555555556
-9-complete-1.csv,ailon,"[{8, 4, 6, 7}, {0, 3, 5, 6, 8}, {1, 2, 5, 6}]",0.2222222222222222
-6-complete-1.csv,bansal_naive,"[{0, 1, 2, 3, 4, 5}]",0.4666666666666667
-6-complete-1.csv,bansal_algorithm_cautious,"[{0, 1, 2, 3, 4, 5}]",0.4666666666666667
-6-complete-1.csv,ailon,"[{1, 2, 4, 5}, {0, 3, 4}]",0.2
-9-complete-2.csv,bansal_naive,"[{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}]",0.4166666666666667
-9-complete-2.csv,bansal_algorithm_cautious,"[{0, 1, 2, 3, 4, 5, 6, 7, 8}]",0.5833333333333334
-9-complete-2.csv,ailon,"[{0, 2, 3, 5, 8}, {8, 3, 4, 6}, {1, 3, 6, 7}]",0.25
-6-complete-0.csv,bansal_naive,"[{0}, {1}, {2}, {3}, {4}, {5}]",0.4
-6-complete-0.csv,bansal_algorithm_cautious,"[{0, 1, 2, 3, 4, 5}]",0.6
-6-complete-0.csv,ailon,"[{1, 2, 3, 4}, {0, 4}, {2, 3, 5}]",0.2
-10-complete-2.csv,bansal_naive,"[{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}]",0.4
-10-complete-2.csv,bansal_algorithm_cautious,"[{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]",0.6
-10-complete-2.csv,ailon,"[{1, 4, 5, 6, 8, 9}, {8, 3, 4, 7}, {9, 2, 4, 5}, {0, 4, 5, 7}]",0.24444444444444444
-10-complete-1.csv,bansal_naive,"[{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}]",0.4666666666666667
-10-complete-1.csv,bansal_algorithm_cautious,"[{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]",0.5333333333333333
-10-complete-1.csv,ailon,"[{0, 2, 4, 6, 8}, {2, 3, 4, 5, 6, 9}, {0, 1, 4, 5, 6}, {3, 5, 7}]",0.17777777777777778
-10-complete-0.csv,bansal_naive,"[{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}]",0.4888888888888889
-10-complete-0.csv,bansal_algorithm_cautious,"[{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}]",0.5111111111111111
-10-complete-0.csv,ailon,"[{0, 2, 4, 5, 7, 8, 9}, {0, 1, 6, 9}, {2, 3, 4, 7}]",0.2
+func_name,index,clusters,filename
+ailon,0,"[set([1]), set([2]), set([0])]",3-complete-2.csv
+bansal_algorithm_cautious,1,"[set([0, 1, 2])]",3-complete-2.csv
+bansal_naive,0,"[set([0]), set([1]), set([2])]",3-complete-2.csv
+ailon,0,"[set([0, 1, 3]), set([2])]",4-complete-1.csv
+bansal_algorithm_cautious,0,"[set([0, 1, 2, 3])]",4-complete-1.csv
+bansal_naive,0,"[set([0, 1, 2, 3])]",4-complete-1.csv
+ailon,0,"[set([0, 1]), set([2, 3])]",4-complete-0.csv
+bansal_algorithm_cautious,0,"[set([0, 1, 2, 3])]",4-complete-0.csv
+bansal_naive,0,"[set([0, 1, 2, 3])]",4-complete-0.csv
+ailon,0,"[set([1]), set([0, 2])]",3-complete-1.csv
+bansal_algorithm_cautious,0,"[set([0, 1, 2])]",3-complete-1.csv
+bansal_naive,0,"[set([0]), set([1]), set([2])]",3-complete-1.csv
+ailon,0,"[set([0, 1, 2, 3])]",4-complete-2.csv
+bansal_algorithm_cautious,0,"[set([0, 1, 2, 3])]",4-complete-2.csv
+bansal_naive,0,"[set([0, 1, 2, 3])]",4-complete-2.csv
+ailon,0,"[set([0, 1]), set([2])]",3-complete-0.csv
+bansal_algorithm_cautious,0,"[set([0, 1, 2])]",3-complete-0.csv
+bansal_naive,0,"[set([0, 1, 2])]",3-complete-0.csv
+ailon,0,"[set([0, 1, 4]), set([2, 3])]",5-complete-2.csv
+bansal_algorithm_cautious,0,"[set([0, 1, 2, 3, 4])]",5-complete-2.csv
+bansal_naive,0,"[set([0]), set([1]), set([2]), set([3]), set([4])]",5-complete-2.csv
+ailon,0,"[set([2, 4]), set([0, 1, 3])]",5-complete-0.csv
+bansal_algorithm_cautious,0,"[set([0, 1, 2, 3, 4])]",5-complete-0.csv
+bansal_naive,0,"[set([0, 1, 2, 3, 4])]",5-complete-0.csv
+ailon,0,"[set([3, 4]), set([0, 2]), set([1])]",5-complete-1.csv
+bansal_algorithm_cautious,0,"[set([0, 1, 2, 3, 4])]",5-complete-1.csv
+bansal_naive,0,"[set([0]), set([1]), set([2]), set([3]), set([4])]",5-complete-1.csv
+ailon,0,"[set([0, 1, 3, 4, 5, 6]), set([2])]",7-complete-0.csv
+bansal_algorithm_cautious,0,"[set([0, 1, 2, 3, 4, 5, 6])]",7-complete-0.csv
+bansal_naive,0,"[set([0, 1, 2, 3, 4, 5, 6])]",7-complete-0.csv
+ailon,0,"[set([1, 2, 4, 6, 7]), set([0, 3, 5])]",8-complete-2.csv
+bansal_algorithm_cautious,0,"[set([0, 1, 2, 3, 4, 5, 6, 7])]",8-complete-2.csv
+bansal_naive,0,"[set([0, 1, 2, 3, 4, 5, 6, 7])]",8-complete-2.csv
+ailon,0,"[set([5]), set([1, 2, 3, 4, 6]), set([0])]",7-complete-1.csv
+bansal_algorithm_cautious,0,"[set([0, 1, 2, 3, 4, 5, 6])]",7-complete-1.csv
+bansal_naive,0,"[set([0]), set([1]), set([2]), set([3]), set([4]), set([5]), set([6])]",7-complete-1.csv
+ailon,0,"[set([0, 1, 2, 5, 6, 7]), set([3, 4])]",8-complete-1.csv
+bansal_algorithm_cautious,0,"[set([0, 1, 2, 3, 4, 5, 6, 7])]",8-complete-1.csv
+bansal_naive,0,"[set([0, 1, 2, 3, 4, 5, 6, 7])]",8-complete-1.csv
+ailon,0,"[set([2, 3, 4, 5, 7]), set([0, 1]), set([6])]",8-complete-0.csv
+bansal_algorithm_cautious,0,"[set([0, 1, 2, 3, 4, 5, 6, 7])]",8-complete-0.csv
+bansal_naive,0,"[set([0, 1, 2, 3, 4, 5, 6, 7])]",8-complete-0.csv
+ailon,0,"[set([0, 6]), set([3, 4]), set([2, 5]), set([1])]",7-complete-2.csv
+bansal_algorithm_cautious,0,"[set([0, 1, 2, 3, 4, 5, 6])]",7-complete-2.csv
+bansal_naive,0,"[set([0]), set([1]), set([2]), set([3]), set([4]), set([5]), set([6])]",7-complete-2.csv
+ailon,0,"[set([0, 1, 3, 5]), set([2]), set([4])]",6-complete-2.csv
+bansal_algorithm_cautious,0,"[set([0, 1, 2, 3, 4, 5])]",6-complete-2.csv
+bansal_naive,0,"[set([0, 1, 2, 3, 4, 5])]",6-complete-2.csv
+ailon,0,"[set([0, 1, 3, 4]), set([5, 6, 7]), set([8, 2])]",9-complete-0.csv
+bansal_algorithm_cautious,0,"[set([0, 1, 2, 3, 4, 5, 6, 7, 8])]",9-complete-0.csv
+bansal_naive,0,"[set([0]), set([1]), set([2]), set([3]), set([4]), set([5]), set([6]), set([7]), set([8])]",9-complete-0.csv
+ailon,0,"[set([8, 2, 3, 6, 7]), set([1, 4]), set([0, 5])]",9-complete-1.csv
+bansal_algorithm_cautious,0,"[set([0, 1, 2, 3, 4, 5, 6, 7, 8])]",9-complete-1.csv
+bansal_naive,0,"[set([0]), set([1]), set([2]), set([3]), set([4]), set([5]), set([6]), set([7]), set([8])]",9-complete-1.csv
+ailon,0,"[set([1, 2, 4, 5]), set([0, 3])]",6-complete-1.csv
+bansal_algorithm_cautious,0,"[set([0, 1, 2, 3, 4, 5])]",6-complete-1.csv
+bansal_naive,0,"[set([0, 1, 2, 3, 4, 5])]",6-complete-1.csv
+ailon,0,"[set([8, 2, 3, 4]), set([0, 1, 5, 6, 7])]",9-complete-2.csv
+bansal_algorithm_cautious,0,"[set([0, 1, 2, 3, 4, 5, 6, 7, 8])]",9-complete-2.csv
+bansal_naive,0,"[set([0]), set([1]), set([2]), set([3]), set([4]), set([5]), set([6]), set([7]), set([8])]",9-complete-2.csv
+ailon,0,"[set([1, 3, 5]), set([2]), set([0, 4])]",6-complete-0.csv
+bansal_algorithm_cautious,0,"[set([0, 1, 2, 3, 4, 5])]",6-complete-0.csv
+bansal_naive,0,"[set([0]), set([1]), set([2]), set([3]), set([4]), set([5])]",6-complete-0.csv
+ailon,0,"[set([9, 2, 6, 1]), set([0, 3, 4, 7]), set([5]), set([8])]",10-complete-2.csv
+bansal_algorithm_cautious,0,"[set([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])]",10-complete-2.csv
+bansal_naive,0,"[set([0]), set([1]), set([2]), set([3]), set([4]), set([5]), set([6]), set([7]), set([8]), set([9])]",10-complete-2.csv
+ailon,0,"[set([8, 0, 2, 4, 6]), set([1, 5]), set([9, 3]), set([7])]",10-complete-1.csv
+bansal_algorithm_cautious,0,"[set([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])]",10-complete-1.csv
+bansal_naive,0,"[set([0]), set([1]), set([2]), set([3]), set([4]), set([5]), set([6]), set([7]), set([8]), set([9])]",10-complete-1.csv
+ailon,0,"[set([2, 3, 4, 7]), set([0, 1, 5, 6, 8, 9])]",10-complete-0.csv
+bansal_algorithm_cautious,0,"[set([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])]",10-complete-0.csv
+bansal_naive,0,"[set([0]), set([1]), set([2]), set([3]), set([4]), set([5]), set([6]), set([7]), set([8]), set([9])]",10-complete-0.csv
