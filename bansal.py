@@ -92,9 +92,9 @@ def bansal_algorithm_cautious(G):
 
     while continue_loop:
         v = random.choice(vertices) # choose a random vertex from the set of vertices
-        print(v)
+        # print(v)
         Av = set(get_all_positive_neighbors(G, v))
-        print(Av)
+        # print(Av)
 
         # vertex removal step
         vertices_to_remove = []
@@ -104,7 +104,7 @@ def bansal_algorithm_cautious(G):
             if not delta_good(3, v, Av, G):
                 vertices_to_remove.append(x)
 
-        print(vertices_to_remove)
+        # print(vertices_to_remove)
 
         Av = Av - set(vertices_to_remove)
 
@@ -116,7 +116,7 @@ def bansal_algorithm_cautious(G):
             if delta_good(7, v, Av, G):
                 vertices_to_add.append(x)
         Av = Av.union(set(vertices_to_add))
-        print(vertices_to_add)
+        # print(vertices_to_add)
 
         if Av == []:
             continue_loop = False

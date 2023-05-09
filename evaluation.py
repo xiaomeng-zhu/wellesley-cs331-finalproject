@@ -1,4 +1,14 @@
-from bansal import get_all_edges, bansal_naive
+import os
+from bansal import get_all_edges, bansal_naive, bansal_algorithm_cautious
+from ailon import ailon
+
+# import all functions here
+FUNCS = {
+    "bansal_naive": bansal_naive,
+    "bansal_algorithm_cautious":bansal_algorithm_cautious,
+    "ailon": ailon
+}
+
 
 def import_graph(file_name):
     """
@@ -69,20 +79,27 @@ def calculate_mistakes_under_alg(func_name, G):
     Given a function name and a Graph, calculate its correctness index
     """
     clusters = func_name(G)
+    print(clusters)
     correctness_index = calculate_mistakes(G, clusters)
     return correctness_index
 
+def calculate_mistakes_under_alg_for_all(fp):
+    """
+    Given a function name, calculate its correctness index for all graphs in data folder, 
+    and output a csv summarizing the results
+    """
+    for filename in os.listdir(fp):
+        if filename.endswith(".csv"):
+            print(filename)
+            file_path = os.path.join(fp, filename)
+            G = import_graph(file_path)
+            for func_name in FUNCS:
+                func = FUNCS[func_name] # store the function in a variable
+                print(func_name, calculate_mistakes_under_alg(func, G))
+
 
 if __name__ == "__main__":
-    # simple_graph = [[1,1,0],
-    #                 [1,1,1],
-    #                 [0,1,1]]
-    # print(is_valid_decision_matrix(simple_graph)) # expected: True
-    # clusters = bansal_naive(simple_graph)
-    # print(clusters) # expected: [{0,1,2}]
-    # print(calculate_mistakes(simple_graph, clusters)) # expected: 0.33333333
-    # print(calculate_mistakes_under_alg(bansal_naive, simple_graph)) # expected: 0.33333333
-
-    import_graph("data/4-complete-0.csv")
+    dir = "data"
+    calculate_mistakes_under_alg_for_all(dir)
 
   
