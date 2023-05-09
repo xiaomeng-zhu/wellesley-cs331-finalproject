@@ -109,7 +109,8 @@ def calculate_mistakes_under_alg_for_all(dir):
                 all_res.append(entry)
 
     # output to csv
-    with open('res.csv', 'w', newline='') as output_file:
+    #with open('res.csv', 'w', newline='') as output_file:
+    with open('res.csv', 'w') as output_file:
         dict_writer = csv.DictWriter(output_file, all_res[0].keys())
         dict_writer.writeheader()
         dict_writer.writerows(all_res)

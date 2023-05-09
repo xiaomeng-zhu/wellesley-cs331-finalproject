@@ -12,16 +12,17 @@ def ailon(G):
     C = set([p])
     edges = G[p]
     for v in range(len(edges)):
-      if edges[v] == 1:
+      if edges[v] == 1 and v in Vt:
         C.add(v)
     Vt = Vt.difference(C)
     clusters.append(C)
 
   return clusters
 
+
 if __name__ == "__main__":
   #G = [[1,1,0],[1,1,0],[0,0,1]]
   #G = [[1,1,0,0], [1,1,0,0], [0,0,1,1], [0,0,1,1]]
   G = [[1,1,1,0], [1,1,1,0], [1,1,1,0], [0,0,0,1]]
-
+  print(G)
   print(ailon(G))
