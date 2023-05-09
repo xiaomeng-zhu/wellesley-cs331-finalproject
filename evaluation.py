@@ -1,11 +1,12 @@
 import os
 from bansal import get_all_edges, bansal_naive, bansal_algorithm_cautious
 from ailon import ailon
+import csv
 
 # import all functions here
 FUNCS = {
     "bansal_naive": bansal_naive,
-    "bansal_algorithm_cautious":bansal_algorithm_cautious,
+    "bansal_algorithm_cautious": bansal_algorithm_cautious,
     "ailon": ailon
 }
 
@@ -79,23 +80,41 @@ def calculate_mistakes_under_alg(func_name, G):
     Given a function name and a Graph, calculate its correctness index
     """
     clusters = func_name(G)
-    print(clusters)
+    # print(clusters)
     correctness_index = calculate_mistakes(G, clusters)
-    return correctness_index
+    return clusters, correctness_index
 
-def calculate_mistakes_under_alg_for_all(fp):
+def calculate_mistakes_under_alg_for_all(dir):
     """
     Given a function name, calculate its correctness index for all graphs in data folder, 
     and output a csv summarizing the results
     """
-    for filename in os.listdir(fp):
+    all_res = []
+
+    # generate all data entries
+    for filename in os.listdir(dir):
         if filename.endswith(".csv"):
-            print(filename)
-            file_path = os.path.join(fp, filename)
+            
+            file_path = os.path.join(dir, filename)
             G = import_graph(file_path)
+
             for func_name in FUNCS:
                 func = FUNCS[func_name] # store the function in a variable
-                print(func_name, calculate_mistakes_under_alg(func, G))
+                entry = {"filename": filename}
+                entry["func_name"] = func_name
+                clusters, index = calculate_mistakes_under_alg(func, G)
+                entry["clusters"] = clusters
+                entry["index"] = index
+
+                all_res.append(entry)
+
+    # output to csv
+    with open('res.csv', 'w', newline='') as output_file:
+        dict_writer = csv.DictWriter(output_file, all_res[0].keys())
+        dict_writer.writeheader()
+        dict_writer.writerows(all_res)
+
+
 
 
 if __name__ == "__main__":
