@@ -43,7 +43,7 @@ def bansal_naive(graph):
         if graph[u][v] == 0: # if it is a negative edge
             num_neg += 1 # increment the num_neg counter by 1
         else:
-           num_pos += 1
+            num_pos += 1
            
     if num_pos >= num_neg:
         all_vertices = list(range(n))
@@ -99,7 +99,7 @@ def bansal_algorithm_cautious(G):
         # vertex removal step
         vertices_to_remove = []
 
-        # if x is 3-delta bad w.r.t. A(v), A(v) = A(v) \ {x}
+        # While there exists x such that it is 3-delta bad w.r.t. A(v), A(v) = A(v) \ {x}
         for x in Av: 
             if not delta_good(3, v, Av, G):
                 vertices_to_remove.append(x)
@@ -139,9 +139,21 @@ def bansal_algorithm_divide_choose(G):
 
 
 if __name__ == "__main__":
-    simple_graph = [[1,1,1],
-                    [1,1,0],
-                    [1,0,1]]
+    # testing code for get_all_edges
+    # print(get_all_edges(3))
+    # print(get_all_edges(4))
+    # print(get_all_edges(5))
+
+    simple_graphs = [
+        [[1,1,0],
+         [1,1,0],
+         [0,0,1]],
+        [[1,0,1,1],
+         [0,1,1,0],
+         [1,1,1,0],
+         [1,0,0,1]]
+    ]
     # res = bansal_naive(simple_graph)
-    res = bansal_algorithm_cautious(simple_graph)
-    print(res)
+    for G in simple_graphs:
+        # print(bansal_naive(G))
+        print(get_all_positive_neighbors(G,2))
