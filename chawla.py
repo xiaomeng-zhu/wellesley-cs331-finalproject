@@ -1,27 +1,26 @@
 import random
 from evaluation import import_graph
+from ChawlaLPSolver import get_LP_solution
 
-def chawla(G, lp_sol):
+def chawla(G):
   """
-  Input: a decision matrix G, LP solution lp_sol
+  Input: a decision matrix G
   Output: clusters result of Chawla et. al. algorithm
   """
   active_vertices = list(range(len(G)))
+  lp_sol = get_LP_solution(len(G))
   clusters = [] # list of sets
 
   while len(active_vertices) > 0:
     v = random.choice(active_vertices) # choose a random vertex from the set of vertices
-    print("the pivot vertex is")
-    print(v)
     s = set()
-    print(G)
+    active_vertices.remove(v)
     for vertex in active_vertices:
-      print(vertex)
-      uv = G[v][vertex]
-      if uv == 1:
+      edge_val = G[v][vertex]
+      if edge_val == 1:
         x_uv = lp_sol[v][vertex]
         p_uv = positive_function(x_uv)
-      if uv == 0:
+      if edge_val == 0:
         x_uv = lp_sol[v][vertex]
         p_uv = negative_function(x_uv)
       p_uv = 1 - p_uv
@@ -30,7 +29,6 @@ def chawla(G, lp_sol):
         s.add(vertex)
         active_vertices.remove(vertex)
     s.add(v)
-    active_vertices.remove(v)
     clusters.append(s)
 
   return clusters
@@ -45,7 +43,6 @@ def negative_function(x):
   return x
 
 #TESTING
-G = import_graph("data/4-complete-2.csv")
-lp_sol = [[1, 0, 1, 1], [0, 1, 0, 0], [1, 0, 1, 0], [1, 0, 0, 1]]
-clus = chawla(G, lp_sol)
+G = import_graph("data/4-complete-1.csv")
+clus = chawla(G)
 print(clus)

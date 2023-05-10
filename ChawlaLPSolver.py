@@ -1,101 +1,100 @@
 from scipy.optimize import linprog
 import numpy as np
 from evaluation import import_graph
+import itertools
 
 
-d = [[1,1,0],
-        [1,1,1],
-        [0,1,1]]
-
-# This is the function you should edit.
-def get_LP_solution(file_name):
+def get_LP_solution(length):
     print("----------")
 
-    #imports graph
-    data_matrix = import_graph(file_name)
-
     #define vertices
-    vertices = [i for i in range(0, len(data_matrix[0]))]
-    edges = [i for i in range(0, len(data_matrix[0]) * len(data_matrix[0]))] #this is var_list
+    vertices = [i for i in range(0, length)]
+    edges = [] #this is var_list
+    num_vertices = len(vertices)
+    for i in range(0, num_vertices):
+        for i in range (0, i):
+            edges.append(1)
     cost = [1 for each in edges]
     A_ineq = []
     B_ineq = []
-    print(vertices)
+
+    mapping = create_mapping(len(vertices))
+    mapping = mapping.astype(int)
     #make A_ineq
     #run for each triangle
-    for i, j, k in vertices:
-        A_ineq_row = []
-        # add x_uv + x_vw - x_uw > 0
+    for triplet in itertools.combinations(vertices, 3):
+        A_ineq_row1 = [0] * len(edges)
+        A_ineq_row1[mapping[triplet[0]][triplet[1]]] = -1
+        A_ineq_row1[mapping[triplet[1]][triplet[2]]] = -1
+        A_ineq_row1[mapping[triplet[0]][triplet[2]]] = 1
+        A_ineq.append(A_ineq_row1)
+        B_ineq_row1 = [0]
+        B_ineq.append(B_ineq_row1)
 
-        var_edges = []
-        #var_list is each edge
-        var_list = [data_matrix[i][j], data_matrix[i][k], data_matrix[j][k]]
+        A_ineq_row2 = [0] * len(edges)
+        A_ineq_row2[mapping[triplet[0]][triplet[1]]] = -1
+        A_ineq_row2[mapping[triplet[1]][triplet[2]]] = 1
+        A_ineq_row2[mapping[triplet[0]][triplet[2]]] = -1
+        A_ineq.append(A_ineq_row2)
+        B_ineq_row2 = [0]
+        B_ineq.append(B_ineq_row2)
 
-       
-
-       
-
-
-
-    #define num_edges
-    #num_edges = sum(row.len() for row in data_matrix)
-
-
-    # # X matrix and Cost function
-    # edges = []
-    # c = []
-    # for i in range(0, num_edges):
-    #     edges.append(str(i))
-    #     c.append(1)
-
-    # # Inequality equations
-    # A_ineq = []
-    # B_ineq = []
+        A_ineq_row3 = [0] * len(edges)
+        A_ineq_row3[mapping[triplet[0]][triplet[1]]] = 1
+        A_ineq_row3[mapping[triplet[1]][triplet[2]]] = -1
+        A_ineq_row3[mapping[triplet[0]][triplet[2]]] = -1
+        A_ineq.append(A_ineq_row3)
+        B_ineq_row3 = [0]
+        B_ineq.append(B_ineq_row3)
 
 
-    # # add x_uv + x_vw - x_uw > 0
-    # for edge in in_graph:
-    #     mat = [0] * num_edges
-    #     #mat = [0 for i in range(num_vertices)]
-    #     mat[edge[0]] = -1.
-    #     mat[edge[1]] = -1.
-    #     mat[edge[2]] = 1.
-    #     A_ineq.append(mat)
-    #     B_ineq.append(0.)
-    # #add x_u > 0
-    # for i in range(0, num_vertices):
-    #     new_mat = [0] * num_vertices
-    #     new_mat[i] = -1.
-    #     A_ineq.append(new_mat)
-    #     B_ineq.append(0.)
+    for pair in itertools.combinations(vertices, 2):
+        A_ineq_row1 = [0] * len(edges)
+        A_ineq_row1[mapping[pair[0]][pair[1]]] = 1
+        A_ineq.append(A_ineq_row1)
+        B_ineq_row1 = [1]
+        B_ineq.append(B_ineq_row1)
+
+        A_ineq_row2 = [0] * len(edges)
+        A_ineq_row2[mapping[pair[0]][pair[1]]] = -1
+        A_ineq.append(A_ineq_row2)
+        B_ineq_row2 = [0]
+        B_ineq.append(B_ineq_row2)
 
 
-    # print('WITHOUT BOUNDS')
+    print('WITHOUT BOUNDS')
     # # pass these matrices to linprog, use the method 'interior-point'. '_ub' implies the upper-bound or
     # # inequality matrices and '_eq' imply the equality matrices
-    # res_no_bounds = linprog(c, A_ub=A_ineq, b_ub=B_ineq, method='revised simplex')
-    # print(res_no_bounds)
+    res_no_bounds = linprog(cost, A_ub=A_ineq, b_ub=B_ineq, method='interior-point')
+    print(res_no_bounds['x'])
+    print(LPsolution_to_matrix(len(vertices), res_no_bounds['x']))
+    return LPsolution_to_matrix(len(vertices), res_no_bounds['x'])
 
-    # #rounding algorithm
-    # min_vc = set()
-    # for i in range(len(res_no_bounds['x'])):
-    #     if res_no_bounds['x'][i] < 0.499999: 
-    #     #if res_no_bounds['x'][i] < 0.5:
-    #         res_no_bounds['x'][i] = 0
-    #     else:
-    #         res_no_bounds['x'][i] = 1
+def create_mapping(int):
+    matrix = np.empty([int, int]) 
+    count = 0
+    for i in range(0, int):
+        matrix[i][i] = -1
+        j = i+1
+        for ind in range(j, int):
+            matrix[i][ind] = count
+            matrix[ind][i] = count
+            count += 1
+    return matrix
 
-    # for i in range(len(res_no_bounds['x'])):
-    #     if res_no_bounds['x'][i] == 1:
-    #         min_vc.add(i)
-
-    # # Checks if min_vc is a valid vertex cover and if so, prints it
-    # # and its size.
-    # # You may want to comment this out if you're working on getting
-    # # the LP solution and haven't implemented the rounding step yet.
-    # is_valid_vc(in_graph, min_vc)
-    # return res_no_bounds['x']
-
+def LPsolution_to_matrix(int, soln):
+    matrix = np.empty([int, int])
+    index = 0 
+    for i in range(0, int):
+        matrix[i][i] = 0
+        j = i+1
+        for ind in range(j, int):
+            matrix[i][ind] = soln[index]
+            matrix[ind][i] = soln[index]
+            index += 1
+    return matrix
 
 #TESTING
-get_LP_solution("data/4-complete-2.csv")
+#get_LP_solution("data/4-complete-2.csv")
+#create_mapping(10)
+#get_LP_solution(4)
