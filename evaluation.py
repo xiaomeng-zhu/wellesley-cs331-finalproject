@@ -1,13 +1,15 @@
 import os
 from bansal import get_all_edges, bansal_naive, bansal_algorithm_cautious
 from ailon import ailon
+from chawla import chawla
 import csv
 
 # import all functions here
 FUNCS = {
     "BansalNaive": bansal_naive,
     "BansalAlgorithmCautious": bansal_algorithm_cautious,
-    "KwikCluster": ailon
+    "KwikCluster": ailon,
+    "Chawla": chawla
 }
 
 
