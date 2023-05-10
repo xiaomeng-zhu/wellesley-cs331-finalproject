@@ -1,7 +1,17 @@
 from scipy.optimize import linprog
 import numpy as np
-from evaluation import import_graph
 import itertools
+
+def import_graph(file_name):
+    """
+    Input: the relative filepath of the csv
+    Output: the graph stored in a list of lists
+    """
+    graph = []
+    with open(file_name, "r") as f:
+        for row in f:
+            graph.append([int(float(i)) for i in row.strip().split(",")])
+    return graph
 
 
 def get_LP_solution(length):
