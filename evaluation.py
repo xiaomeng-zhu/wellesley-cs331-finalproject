@@ -5,9 +5,9 @@ import csv
 
 # import all functions here
 FUNCS = {
-    "bansal_naive": bansal_naive,
-    "bansal_algorithm_cautious": bansal_algorithm_cautious,
-    "ailon": ailon
+    "BansalNaive": bansal_naive,
+    "BansalAlgorithmCautious": bansal_algorithm_cautious,
+    "KwikCluster": ailon
 }
 
 
@@ -98,15 +98,18 @@ def calculate_mistakes_under_alg_for_all(dir):
             file_path = os.path.join(dir, filename)
             G = import_graph(file_path)
 
-            for func_name in FUNCS:
-                func = FUNCS[func_name] # store the function in a variable
-                entry = {"filename": filename}
-                entry["func_name"] = func_name
-                clusters, index = calculate_mistakes_under_alg(func, G)
-                entry["clusters"] = clusters
-                entry["index"] = index
+            if is_valid_decision_matrix(G): # only proceed if G is a valid decision matrix
+                for func_name in FUNCS:
+                    func = FUNCS[func_name] # store the function in the func variable
+                    entry = {"filename": filename}
+                    entry["func_name"] = func_name
+                    clusters, index = calculate_mistakes_under_alg(func, G)
+                    entry["clusters"] = clusters
+                    entry["index"] = index
 
-                all_res.append(entry)
+                    all_res.append(entry)
+            else: # print alert message and move onto the next file
+                print("The graph in", file_path, "is not a valid decision matrix")
 
     # output to csv
     #with open('res.csv', 'w', newline='') as output_file:
