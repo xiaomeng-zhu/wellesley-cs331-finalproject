@@ -80,6 +80,14 @@ def delta_good(delta, v, C, G):
     
     return True
     
+def exists_3delta_bad(Av, G):
+    """
+    helper function for bansal_algorithm_cautious
+    """
+    for x in Av:
+        if not delta_good(3, x, Av, G):
+            return x
+    return False
 
 def bansal_algorithm_cautious(G):
     """
@@ -96,26 +104,38 @@ def bansal_algorithm_cautious(G):
         Av = set(get_all_positive_neighbors(G, v))
         # print(Av)
 
-        # vertex removal step
-        vertices_to_remove = []
+        # # vertex removal step
+        # vertices_to_remove = []
 
-        # While there exists x such that it is 3-delta bad w.r.t. A(v), A(v) = A(v) \ {x}
-        for x in Av: 
-            if not delta_good(3, v, Av, G):
-                vertices_to_remove.append(x)
+        # # While there exists x such that it is 3-delta bad w.r.t. A(v), A(v) = A(v) \ {x}
+        # for x in Av: 
+        #     if not delta_good(3, v, Av, G):
+        #         vertices_to_remove.append(x)
 
         # print(vertices_to_remove)
 
-        Av = Av - set(vertices_to_remove)
+        # Av = Av - set(vertices_to_remove)
+
+        continueRemove = True
+        while continueRemove:
+            exists_res = exists_3delta_bad(Av, G)
+            if exists_res:
+                Av = Av - set(exists_res)
+                print(Av)
+            else:
+                continueRemove = False
+        # print(Av)
 
         # vertex addition step
         vertices_to_add = []
 
         # if x is 7-delta good w.r.t. A(v), A(v) = A(v) union set of xs
-        for x in vertices:
-            if delta_good(7, v, Av, G):
-                vertices_to_add.append(x)
+        for y in vertices:
+            if delta_good(7, y, Av, G):
+                vertices_to_add.append(y)
         Av = Av.union(set(vertices_to_add))
+        # print(Av)
+        # print("----------")
         # print(vertices_to_add)
 
         if Av == []:
@@ -132,11 +152,6 @@ def bansal_algorithm_cautious(G):
                 continue_loop = False
 
     return clusters
-            
-def bansal_algorithm_divide_choose(G):
-    pass
-
-
 
 if __name__ == "__main__":
     # testing code for get_all_edges
@@ -156,4 +171,5 @@ if __name__ == "__main__":
     # res = bansal_naive(simple_graph)
     for G in simple_graphs:
         # print(bansal_naive(G))
-        print(get_all_positive_neighbors(G,2))
+        # print(get_all_positive_neighbors(G,2))
+        print(bansal_algorithm_cautious(G))

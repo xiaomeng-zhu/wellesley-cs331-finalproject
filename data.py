@@ -38,5 +38,5 @@ def generate_dataset(min_vertex, max_vertex, graph_per_size):
 
     
 if __name__ == "__main__":
-    generate_random_decision_matrix(5)
-    generate_dataset(3,10,3)
+    # generate_random_decision_matrix(5)
+    generate_dataset(3,20,5)
