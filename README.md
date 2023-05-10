@@ -5,6 +5,7 @@ To run our code with our dataset, run the following command in the terminal:
 ```
 python evaluation.py
 ```
+It will run all of the algorithms on all of the graphs in our dataset. `res.csv` summarizes all of the results.
 
 To run the algorithms that we implemented on a custom graph,
 1. Store the decision matrix of your graph as a csv file in the `data` directory. Each row in the matrix should take a separate line. Items in the row are separated by commas.
