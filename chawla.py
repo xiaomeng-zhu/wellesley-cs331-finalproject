@@ -42,7 +42,8 @@ def positive_function(x):
 def negative_function(x):
   return x
 
-#TESTING
-G = import_graph("data/4-complete-1.csv")
-clus = chawla(G)
-print(clus)
+if __name__ == "__main__":
+  #TESTING
+  G = import_graph("data/4-complete-1.csv")
+  clus = chawla(G)
+  print(clus)
